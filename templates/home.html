@@ -1,0 +1,14 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<h1>Home template</h1>
+
+<div>
+    {% for product in products %}
+    <div>
+        {{product.id}} -- <a href="/product/{{product.id}}">{{product.name}}</a>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock content %}

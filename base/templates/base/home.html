@@ -1,0 +1,26 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+<h1>Home template</h1>
+
+<div class="home-container">
+
+    <div >
+        {% for product in products %}
+        <div >
+            <a href="{% url 'product' product.id %}">
+                <!-- {% if product.image %} -->
+                <img src="{{product.image.url}} " alt="" style="height: auto; width: 200px;"></a> <br>
+                <!-- {% endif %} -->
+            <a href="{% url 'product' product.id %}">{{product.name}}</a>
+            <p>{{product.price}}</p>
+            <p>{{product.miles}}miles,{{product.used_or_new}}</p>
+            <p>{{product.location}}</p>
+            <hr>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock content %}

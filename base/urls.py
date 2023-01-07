@@ -10,6 +10,7 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('product/<str:pk>/', views.product, name='product'),
     path('create-product', views.createProduct, name='create-product'),
+    path('update-product/<str:pk>/', views.updateProduct, name='update-product'),
     path('sellcar/', views.sellCars, name='sellcar'),
     path('help/', views.help, name='help'),
     path('aboutus/', views.aboutUs, name='aboutus'),

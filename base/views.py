@@ -84,7 +84,7 @@ def createProduct(request):
         Product.objects.create(
             host=request.user,
             topic=topic,
-            image=request.POST.get('image'),
+            image=request.FILES.get('image'),
             name=request.POST.get('name'),
             description=request.POST.get('description'),
             miles=request.POST.get('miles'),
@@ -112,7 +112,18 @@ def createProduct(request):
     return render(request, 'base/product_form.html', context)
 
 
-
+def updateProduct(request, pk):
+    product = Product.objects.get(id=pk)
+    form = ProductForm(instance=product)
+    
+    if request.method == 'POST':
+        form = ProductForm(request.POST, instance=product)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    
+    context = {'form': form}
+    return render(request, 'base/product_form.html', context)
 
 
 

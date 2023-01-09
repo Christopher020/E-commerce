@@ -16,7 +16,8 @@
             <a href="{% url 'product' product.id %}">{{product.name}}</a>
             <p>{{product.price}}</p>
             <p>{{product.miles}}miles,{{product.used_or_new}}</p>
-            <p>{{product.location}}</p> <a href="{% url 'update-product' product.id %}">Edit</a>
+            <p>{{product.location}}</p> <a href="{% url 'update-product' product.id %}">Update</a>
+            <a href="{% url 'delete-product' product.id %}">Delete</a>
             <hr>
         </div>
         {% endfor %}

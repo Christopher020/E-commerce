@@ -10,7 +10,7 @@ class Topic(models.Model):
 
 
 class Product(models.Model):
-    image = models.ImageField(upload_to='product/', null=True)  
+    image = models.FileField(upload_to='product/', null=True)  
     host = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     topic = models.ForeignKey(Topic, on_delete=models.SET_NULL, null=True)
     name = models.CharField(max_length=200)

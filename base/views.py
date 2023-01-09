@@ -98,6 +98,7 @@ def createProduct(request):
             Exterior_color=request.POST.get('Exterior_color'),
             vehicle_id=request.POST.get('vehicle_id')
         )        
+        messages.success(request, 'Product added successfully')
         return redirect('home')
         # form = ProductForm(request.POST)
         # if form.is_valid():
@@ -125,6 +126,13 @@ def updateProduct(request, pk):
     context = {'form': form}
     return render(request, 'base/product_form.html', context)
 
+
+def deleteProduct(request, pk):
+    product = Product.objects.get(id=pk)
+    if request.method == 'POST':
+        product.delete()
+        return redirect('home')
+    return render(request, 'base/delete.html', {'obj':product})
 
 
 def sellCars(request):
